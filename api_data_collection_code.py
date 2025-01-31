@@ -50,7 +50,7 @@ code = pd.read_csv(code_file, sep='\t', encoding='utf-8')
 print(code.head())
 
 code.columns = ['code', 'name', 'is_exist']
-Merge branch 'main' of https://github.com/JEEEUN-LEE/my-projectcode = code[code['is_exist'] == '존재']
+code = code[code['is_exist'] == '존재']
 
 print(code['code'][0])
 print(type(code['code'][0]))  # int64타입
@@ -63,7 +63,7 @@ year = [str("%02d" % (y)) for y in range(2015, 2024)]
 month = [str("%02d" % (m)) for m in range(1, 13)]
 base_date_list = ["%s%s" % (y, m) for y in year for m in month]
 
-gu = "강남구"
+gu = "마포구"
 gu_code = code[(code['name'].str.contains(gu))]
 gu_code = gu_code['code'].reset_index(drop=True)
 gu_code = str(gu_code[0])[0:5]
